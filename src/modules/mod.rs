@@ -14,3 +14,6 @@ use crate::modules::grid::draw_grid;
 */
 // Add modules below
 pub mod label;
+pub mod scale;
+pub mod grid;
+pub mod still_image;

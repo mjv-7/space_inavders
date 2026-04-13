@@ -6,6 +6,7 @@ Program Details: A space invaders game, consisting of enemy ships and player shi
 
 mod modules;
 mod welcome;
+mod game;
 use macroquad::prelude::*;
 
 /// Set up window settings before the app runs
@@ -36,7 +37,7 @@ async fn main() {
         }
         clear_background(RED);
 
-
+        
         next_frame().await;
     }
 }
