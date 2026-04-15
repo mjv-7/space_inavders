@@ -17,3 +17,4 @@ pub mod label;
 pub mod scale;
 pub mod grid;
 pub mod still_image;
+pub mod text_button;

@@ -1,7 +1,7 @@
 /*
 By: <Mujibullah Muhebullah>
 Date: 2026-04-08
-Screen Details:
+Screen Details: The actual game of Space Invaders, where you as a player should shoot and kill the enemies
  */
 
 use macroquad::prelude::*;
@@ -23,7 +23,7 @@ pub async fn run() -> String{
     use_virtual_resolution(1440.0, 1080.0);
     let lbl_out = Label::new("Hello\nWorld", 50.0, 100.0, 30);
     loop {
-        clear_background(RED);
+        clear_background(WHITE);
         lbl_out.draw();
         img_player.draw();
         draw_grid(50.0, BLACK);      

@@ -31,6 +31,7 @@ async fn main() {
         if get_time() - last_switch > 0.01 {
             current_screen = match current_screen.as_str() {
                 "welcome" => welcome::run().await,
+                "game" => game::run().await,
                 _ => break,
             };
             last_switch = get_time();
