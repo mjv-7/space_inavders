@@ -13,8 +13,8 @@ use macroquad::prelude::*;
 fn window_conf() -> Conf {
     Conf {
         window_title: "space_inavders".to_string(),
-        window_width: 1024,
-        window_height: 768,
+        window_width: 1440,
+        window_height: 1080,
         fullscreen: false,
         high_dpi: true,
         window_resizable: true,
