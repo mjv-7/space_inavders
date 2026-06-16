@@ -72,7 +72,7 @@ pub async fn run() -> String{
         lbl_out.draw();
         img_player.draw();
         img_enemy.draw();
-        draw_grid(50.0, BLACK);      
+        draw_grid(40.0, BLACK);      
         next_frame().await;
     }
 }

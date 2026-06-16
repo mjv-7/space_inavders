@@ -28,7 +28,7 @@ pub async fn run() -> String{
             return "game".to_string();
         }
         lbl_out.draw();
-        draw_grid(50.0, BLACK);
+        draw_grid(40.0, BLACK);
         next_frame().await;
     }
 }
