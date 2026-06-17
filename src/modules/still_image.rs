@@ -70,7 +70,7 @@ Additional functionality:
 */
 use macroquad::prelude::*;
 use macroquad::texture::Texture2D;
-
+#[derive(Clone)]
 pub struct StillImage {
     texture: Texture2D,
     x: f32,

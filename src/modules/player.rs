@@ -3,8 +3,10 @@ By: Mujibullah
 Date: 2026-02-11
 Module Details: Player module for handling player movement and collision
  */
+use crate::modules::bullets::Bullet;
 use crate::modules::collision::check_collision;
 use crate::modules::still_image::StillImage;
+use crate::modules::{bullets, player};
 use ::macroquad::prelude::*;
 
 pub struct Player {
@@ -23,15 +25,26 @@ impl Player {
             old_pos: vec2(0.0, 0.0),
         }
     }
-    pub fn key_press(&mut self, img_sidewall1: &StillImage, img_sidewall2: &StillImage) {
+    pub async fn key_press(&mut self, img_sidewall1: &StillImage, img_sidewall2: &StillImage, bullet_list: &mut Vec<Bullet>) -> Vec<Bullet> {
         let mut move_dir = vec2(0.0, 0.0);
-
         // Keyboard input
         if is_key_down(KeyCode::D) {
             move_dir.x += 1.0;
         }
         if is_key_down(KeyCode::A) {
             move_dir.x -= 1.0;
+        }
+        if is_key_down(KeyCode::Space) {
+            let bullet = bullets::Bullet::new(
+                "assets/bullet.png".to_string(),
+                self.view.get_x(),
+                self.view.get_y(),
+                32.0,
+                32.0,
+                self.movement,
+            )
+            .await;
+            bullet_list.push(bullet);
         }
 
         // Normalize the movement to prevent faster diagonal movement
@@ -46,7 +59,9 @@ impl Player {
         if check_collision(self.view_player(), img_sidewall1, 1) || check_collision(self.view_player(), img_sidewall2, 1) {
             self.set_x(self.get_x() - self.movement.x);
         }
+        bullet_list.to_vec()
     }
+    
     pub fn position(&self) -> Vec2 {
         vec2(self.view.get_x(), self.view.get_y())
     }
@@ -87,7 +102,7 @@ impl Player {
     pub fn back_y(&mut self) {
         self.set_y(self.old_pos.y);
     }
-#[allow(unused)]
+    #[allow(unused)]
     pub fn collision_x(&mut self, img_out: &StillImage) -> bool {
         {
             let mut collision = false;
@@ -122,5 +137,4 @@ impl Player {
     pub async fn set_texture(&mut self, texture_path: &str) {
         self.view.set_texture(texture_path).await;
     }
- 
 }
