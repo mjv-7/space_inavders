@@ -27,8 +27,11 @@ impl Enemy {
     pub fn move_enemy(&mut self, img_sidewall1: &StillImage, img_sidewall2: &StillImage) {
     self.view.set_x(self.view.get_x() + self.movement.x * self.move_speed * get_frame_time());
     if check_collision(&self.view, img_sidewall1, 1) || check_collision(&self.view, img_sidewall2, 1) {
+        
+        let original_direction = self.movement.x;
         self.movement.x = -self.movement.x; // flip direction
-        self.view.set_x(self.view.get_x() - self.movement.x * self.move_speed * get_frame_time());
+        
+        self.view.set_x(self.view.get_x() - original_direction * self.move_speed * get_frame_time());
     }
 }
       #[allow(unused)]
@@ -42,6 +45,7 @@ impl Enemy {
         self.view.set_y(y);
         self
     }
+    #[allow(unused)]
     pub fn get_x(&self) -> f32 {
         self.view.get_x()
     }

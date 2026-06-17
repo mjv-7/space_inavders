@@ -67,6 +67,7 @@ impl Player {
     pub fn view_player(&self) -> &StillImage {
         &self.view
     }
+    #[allow(unused)]
     pub fn set_position(&mut self, x: f32, y: f32) {
         self.set_x(x);
         self.set_y(y);
@@ -74,16 +75,19 @@ impl Player {
     pub fn draw(&mut self) {
         self.view.draw();
     }
+    #[allow(unused)]
     pub fn movement(&mut self) -> Vec2 {
         self.movement
     }
+    #[allow(unused)]
     pub fn back_x(&mut self) {
         self.set_x(self.old_pos.x);
     }
+    #[allow(unused)]
     pub fn back_y(&mut self) {
         self.set_y(self.old_pos.y);
     }
-
+#[allow(unused)]
     pub fn collision_x(&mut self, img_out: &StillImage) -> bool {
         {
             let mut collision = false;
@@ -98,6 +102,7 @@ impl Player {
             collision
         }
     }
+    #[allow(unused)]
     pub fn collision_y(&mut self, img_out: &StillImage) -> bool {
         let mut collision = false;
         if self.movement.y != 0.0 {
@@ -109,9 +114,11 @@ impl Player {
 
         collision
     }
+    #[allow(unused)]
     pub fn collision(&mut self, img_out: &StillImage) -> bool {
         if check_collision(&self.view, img_out, 1) { true } else { false } // check_collision(obj1, obj2, skip_pixels)
     }
+    #[allow(unused)]
     pub async fn set_texture(&mut self, texture_path: &str) {
         self.view.set_texture(texture_path).await;
     }
