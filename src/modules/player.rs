@@ -34,7 +34,7 @@ impl Player {
         if is_key_down(KeyCode::A) {
             move_dir.x -= 1.0;
         }
-        if is_key_down(KeyCode::Space) {
+        if is_key_pressed(KeyCode::Space) {
             let bullet = bullets::Bullet::new(
                 "assets/bullet.png".to_string(),
                 self.view.get_x(),

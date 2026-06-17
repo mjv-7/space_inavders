@@ -106,6 +106,10 @@ pub async fn run() -> String {
         for i in 0..bullet_list.len() {
             bullet_list[i].update();
             bullet_list[i].draw();
+            if bullet_list[i].get_y() > 1200.0 {
+               bullet_list.remove(i);
+                 break;
+            }
         }
         for i in 0..hearts {
             let x = 20.0 + (i as f32) * 60.0;
