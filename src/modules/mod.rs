@@ -18,3 +18,7 @@ pub mod scale;
 pub mod grid;
 pub mod still_image;
 pub mod text_button;
+pub mod collision;
+pub mod bullets;
+pub mod enemy;
+pub mod player;
