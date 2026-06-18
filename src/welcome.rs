@@ -4,7 +4,6 @@ Date: 2026-04-08
 Screen Details:
  */
 
-use crate::modules::grid::draw_grid;
 use crate::modules::label::Label;
 use crate::modules::scale::use_virtual_resolution;
 use crate::modules::still_image::StillImage;
@@ -62,12 +61,13 @@ Your Objective is to Defeat the Aliens",
     lbl_out.with_colors(WHITE, Some(DARKGRAY));
     let btn_next = TextButton::new(640.0, 480.0, 200.0, 60.0, "Click to Play!", BLUE, GREEN, 30);
     let mut lbl_directions = Label::new(
-        "A and D keys are for movement,
+        "A and D keys are for movement, And Space to fire
     your main objective is to destroy the Aliens,
-    and not loose your three hearts",
+    and not loose your three hearts
+After loosing or winning you would be sent back to the welcome menu",
         50.0,
         800.0,
-        50,
+        42,
     );
     lbl_directions.with_colors(WHITE, Some(DARKGRAY));
     let img_bg = StillImage::new(
@@ -96,7 +96,6 @@ Your Objective is to Defeat the Aliens",
         if btn_next.click() {
             return "game".to_string();
         }
-         draw_grid(40.0, WHITE);
         next_frame().await;
     }
 }

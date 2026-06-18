@@ -23,6 +23,9 @@ impl Enemy {
     pub fn draw(&mut self) {
         self.view.draw();
     }
+    pub fn view(&self) -> &StillImage {
+    &self.view
+}
 
     pub fn move_enemy(&mut self, img_sidewall1: &StillImage, img_sidewall2: &StillImage) {
     self.view.set_x(self.view.get_x() + self.movement.x * self.move_speed * get_frame_time());

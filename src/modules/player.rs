@@ -25,7 +25,7 @@ impl Player {
             old_pos: vec2(0.0, 0.0),
         }
     }
-    pub async fn key_press(&mut self, img_sidewall1: &StillImage, img_sidewall2: &StillImage, bullet_list: &mut Vec<Bullet>) -> Vec<Bullet> {
+    pub async fn key_press(&mut self, img_sidewall1: &StillImage, img_sidewall2: &StillImage, bullet_list: &mut Vec<Bullet>, bullet_template: &Bullet) -> Vec<Bullet> {
         let mut move_dir = vec2(0.0, 0.0);
         // Keyboard input
         if is_key_down(KeyCode::D) {
@@ -35,16 +35,9 @@ impl Player {
             move_dir.x -= 1.0;
         }
         if is_key_pressed(KeyCode::Space) {
-            let bullet = bullets::Bullet::new(
-                "assets/bullet.png".to_string(),
-                self.view.get_x(),
-                self.view.get_y(),
-                32.0,
-                32.0,
-                self.movement,
-            )
-            .await;
-            bullet_list.push(bullet);
+            let mut b = bullet_template.clone();
+            b.set_position(self.view.get_x(), self.view.get_y());
+            bullet_list.push(b);
         }
 
         // Normalize the movement to prevent faster diagonal movement
@@ -61,7 +54,7 @@ impl Player {
         }
         bullet_list.to_vec()
     }
-    
+
     pub fn position(&self) -> Vec2 {
         vec2(self.view.get_x(), self.view.get_y())
     }

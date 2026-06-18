@@ -20,7 +20,10 @@ impl Bullet {
             movement: Vec2::new(movement.x,movement.y),
         }
     }
-
+    #[allow(unused)]
+    pub fn view(&self) -> &StillImage {
+    &self.view
+ }
     pub fn draw(&mut self) {
         self.view.draw();
     }
@@ -30,6 +33,12 @@ impl Bullet {
         self.view.set_y(y);
         self
     }
+    pub fn get_x(&self) -> f32 {
+    self.view.get_x()
+}
+pub fn set_x(&mut self, x: f32) {
+    self.view.set_x(x);
+}
     pub fn get_y(&self) -> f32 {
         self.view.get_y()
     }
@@ -43,7 +52,7 @@ impl Bullet {
         vec2(self.view.get_x(), self.view.get_y())
     }
     pub fn update(&mut self) {
-    let new_y = self.view.get_y() - self.move_speed * get_frame_time();
+    let new_y = self.view.get_y() + self.movement.y * self.move_speed * get_frame_time();
     self.view.set_y(new_y);
 }
 
