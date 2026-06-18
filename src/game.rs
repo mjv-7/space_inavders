@@ -203,17 +203,14 @@ let img_bg = StillImage::new(
                 break 'enemy_bullet_loop;
             }
         }
+        if enemies.is_empty() || hearts < 1 {
+            return "welcome".to_string();
+        }
         for i in 0..hearts {
             let x = 20.0 + (i as f32) * 60.0;
             let mut h = heart.clone();
             h.set_x(x);
             h.draw();
-        }
-        if enemies.is_empty() {
-            return "welcome".to_string();
-        }
-        if hearts < 1 {
-            return "welcome".to_string();
         }
         draw_grid(40.0, BLACK);
         next_frame().await;

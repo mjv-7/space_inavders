@@ -26,19 +26,11 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
     let mut current_screen = "welcome".to_string();
-    let mut last_switch = get_time() - 0.02;
     loop {
-        if get_time() - last_switch > 0.01 {
-            current_screen = match current_screen.as_str() {
-                "welcome" => welcome::run().await,
-                "game" => game::run().await,
-                _ => break,
-            };
-            last_switch = get_time();
-        }
-        clear_background(RED);
-
-        
-        next_frame().await;
+        current_screen = match current_screen.as_str() {
+            "welcome" => welcome::run().await,
+            "game" => game::run().await,
+            _ => break,
+        };
     }
 }
